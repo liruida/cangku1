@@ -1,0 +1,98 @@
+# SQL Manager 2007 Lite for MySQL 4.4.2.1
+# ---------------------------------------
+# Host     : localhost
+# Port     : 3306
+# Database : ski_db
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+SET FOREIGN_KEY_CHECKS=0;
+
+CREATE DATABASE `ski_db`
+    CHARACTER SET 'utf8'
+    COLLATE 'utf8_general_ci';
+
+USE `ski_db`;
+
+#
+# Structure for the `product` table : 
+#
+
+CREATE TABLE `product` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `discountprice` int(11) DEFAULT NULL,
+  `listimg` varchar(100) DEFAULT NULL,
+  `img1` varchar(100) DEFAULT NULL,
+  `img2` varchar(100) DEFAULT NULL,
+  `img3` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+#
+# Structure for the `productcolor` table : 
+#
+
+CREATE TABLE `productcolor` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) DEFAULT NULL,
+  `productid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
+# Structure for the `productsize` table : 
+#
+
+CREATE TABLE `productsize` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) DEFAULT NULL,
+  `productid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
+# Data for the `product` table  (LIMIT 0,500)
+#
+
+INSERT INTO `product` (`id`, `name`, `description`, `price`, `discountprice`, `listimg`, `img1`, `img2`, `img3`) VALUES 
+  (3,'滑雪服','暖和',100,90,'images/3.jpg','images/4.jpg','images/5.jpg','images/9.jpg'),
+  (4,'滑雪帽','好看',200,180,NULL,NULL,NULL,NULL);
+COMMIT;
+
+
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+USE `ski_db`;
+
+INSERT INTO `product` (`id`, `name`,`productid`) VALUES 
+  (1,151,6)
+
+alter table product add column producttypeid int
+
+
+CREATE TABLE `producttype` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+
+INSERT INTO `producttype` (`id`, `name`) VALUES 
+  (1,'高山滑雪')
+
+CREATE TABLE `showcart` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `productname` varchar(50) DEFAULT NULL,
+  `count` int DEFAULT NULL,
+  `sumcount` int
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
